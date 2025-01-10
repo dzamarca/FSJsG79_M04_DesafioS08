@@ -18,8 +18,8 @@ const UserProvider = ({ children }) => {
         password
       }
       const user = await axios.post(url, payload)
-      
-      localStorage.setItem('email',user.data.email)
+
+      localStorage.setItem('email', user.data.email)
       localStorage.setItem('token', user.data.token)
       setToken(true)
 
@@ -45,8 +45,8 @@ const UserProvider = ({ children }) => {
         password
       }
       const user = await axios.post(url, payload)
-      
-      localStorage.setItem('email',user.data.email)
+
+      localStorage.setItem('email', user.data.email)
       localStorage.setItem('token', user.data.token)
       setToken(true)
 
@@ -63,12 +63,36 @@ const UserProvider = ({ children }) => {
       })
     }
   }
+
+  const usuarioConectado = async () => {
+    try {
+      const token2 = localStorage.getItem("token");
+      if (!token2) return;
+
+      const url = "http://localhost:5000/api/auth/me";
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token2}`,
+        },
+      };
+      const response = await axios.get(url, config);
+      const userData = response.data.email;
+      setUsuario(userData);
+    } catch (error) {
+      const errorData = error.response?.data?.error || "Error al obtener los datos del usuario";
+      Swal.fire({
+        text: errorData,
+        icon: "error",
+      });
+    }
+
+  }
+
   const logout = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('email')
     setToken(false);
     setUsuario('')
-
     Swal.fire({
       text: 'Se ha cerrado la sesión exitosamente',
       icon: 'info'
@@ -79,7 +103,9 @@ const UserProvider = ({ children }) => {
     token,
     logout,
     login,
-    registrerUser
+    registrerUser,
+    usuarioConectado,
+    usuario
   }
 
   return (
