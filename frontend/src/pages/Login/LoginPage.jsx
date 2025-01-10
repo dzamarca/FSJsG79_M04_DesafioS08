@@ -27,13 +27,7 @@ const LoginPage = () => {
             });
             return
         }
-
         login(mail,password);
-
-        // Swal.fire({
-        //     text: 'Inicio de sesión exitoso',
-        //     icon: 'success'
-        // });
     }
 
     return (

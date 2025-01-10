@@ -1,12 +1,17 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { Button, Form } from "react-bootstrap"
 import "./login.css"
-import Swal from 'sweetalert2'
+// import Swal from 'sweetalert2'
+import { UserContext } from "../../context/UserContext"
+
 
 const RegistrerPages = () => {
     const [mail, setMail] = useState("")
     const [password, setPassword] = useState("")
     const [password2, setPassword2] = useState("")
+
+    const {registrerUser} = useContext(UserContext)
+    
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -31,10 +36,13 @@ const RegistrerPages = () => {
             });
             return
         }
-        Swal.fire({
-            text: 'Registro exitoso',
-            icon: 'success'
-        });
+
+        registrerUser(mail,password);
+
+        // Swal.fire({
+        //     text: 'Registro exitoso',
+        //     icon: 'success'
+        // });
     }
 
     return (
