@@ -1,0 +1,20 @@
+.card {
+    width: 25em;
+    text-align: center;
+}
+
+.tituloCard {
+    margin-top: 5px;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: start;
+}
+
+.precio {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.listaIngredientes{
+    text-align: start;
+}

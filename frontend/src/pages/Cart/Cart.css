@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.cardPizza{
+    display: flex;
+    width: 800px;
+    justify-content: space-around;
+
+}
+.imagenTexto{
+    width: 200px;
+    display: flex;
+    align-items: center;
+
+}
+
+.imagenTexto img{
+    border-radius: 10px;
+    width: 150px;
+    padding: 5px;
+}
+.nombrePizza{
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.opciones{
+    display: flex;
+    align-items: center;
+    width: 200px;
+    justify-content: space-evenly;
+    align-content: center;
+}
