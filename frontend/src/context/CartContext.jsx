@@ -52,13 +52,17 @@ const CardProvider = ({ children }) => {
             cart.reduce((sum, pizza) => sum + pizza.price * pizza.count, 0)
         )
     }
+    const handleVaciaCarro = ()=>{
+        setCart([])
+    }
 
     const stateGlobal = {
         cart,
         handleIncrementa,
         handleDisminuye,
         handleAgrega,
-        handleCalculaTotal
+        handleCalculaTotal,
+        handleVaciaCarro
     }
     return <CartContext.Provider value={stateGlobal}>{children}</CartContext.Provider>
 }

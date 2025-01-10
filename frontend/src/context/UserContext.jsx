@@ -6,7 +6,7 @@ import axios from 'axios'
 export const UserContext = createContext()
 const UserProvider = ({ children }) => {
 
-  const [token, setToken] = useState(true)
+  const [token, setToken] = useState(false)
   const [usuario, setUsuario] = useState('')
   // const navigate = useNavigate()
 
@@ -78,6 +78,8 @@ const UserProvider = ({ children }) => {
       const response = await axios.get(url, config);
       const userData = response.data.email;
       setUsuario(userData);
+      return response.data
+      
     } catch (error) {
       const errorData = error.response?.data?.error || "Error al obtener los datos del usuario";
       Swal.fire({
